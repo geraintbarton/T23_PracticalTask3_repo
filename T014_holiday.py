@@ -16,6 +16,8 @@ def calculate_hotel_cost(num_hotel_nights, daily_hotel_price=100):
 def calculate_holiday_cost(flight_cost, car_rental_cost, hotel_cost):
     return(flight_cost + car_rental_cost + hotel_cost)
 
+def calculate_discount(holiday_amount, discount):
+    return(holiday_amount*(1-(discount/100)))
 
 # dict to hold list of cities and associated flight costs
 cities = {
@@ -58,9 +60,10 @@ if not rental_days.is_integer():
 #calculate the total hotel costs. 
 total_holiday_cost = calculate_holiday_cost(calculate_plane_cost(city_selection),calculate_car_rental(rental_days),calculate_hotel_cost(num_nights))
 
-
+discount = int(input("Enter the discount percentage: "))
+discounted_price = calculate_discount(total_holiday_cost,discount)
 
 
 print("The total cost of your holiday will be: £{:,.2f}".format(total_holiday_cost))
-
+print("The discounted price is: £{:,.2f}".format(discounted_price))
 
